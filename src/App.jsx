@@ -14,6 +14,7 @@ import Home from "./pages/home/Home"
 import SearchResult from "./pages/searchResult/SearchResult"
 
 function App() {
+  const API_KEY = import.meta.env.VITE_APP_API_KEY;
   const dispatch = useDispatch();
   const { url } = useSelector(state => state.home)
   console.log(url)
@@ -23,7 +24,7 @@ function App() {
   }, []);
 
   const fetchApiConfig = () => {
-    fetchDataFromApi('/configuration')
+    fetchDataFromApi(`/configuration?api_key=${API_KEY}`)
       .then(res => {
         console.log(res);
         const url = {
